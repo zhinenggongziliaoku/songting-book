@@ -1,10 +1,10 @@
-#import "../lib.typ": songting-book
+#import "../lib.typ": songting-book, songting-b6
 #import "@preview/tablem:0.2.0": tablem
 
 #show: songting-book.with(
   title: "西游异志：西游记妖怪群像研究",
   author: "克劳德",
-  cfg: (paper: "iso-b6")
+  cfg: songting-b6
 )
 
 = 自序
@@ -564,7 +564,7 @@
 19. *女儿国*：蝎子精
 20. *西梁女国*：百眼魔君
 
-== 附录：《西游记》中的妖怪与佛道两家关系
+== 附录：《西游记》中的妖怪与佛道两家关系分析
 
 *佛门系统妖怪*：
 

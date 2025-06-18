@@ -1,12 +1,10 @@
-#import "../lib.typ": songting-book
+#import "../lib.typ": songting-book, songting-a5
 #import "@preview/tablem:0.2.0": tablem
 
 #show: songting-book.with(
   title: "西游异志：西游记妖怪群像研究",
   author: "克劳德",
-  cfg:(paper:"a5", 
-    margin: (top: 1cm, bottom: 1cm, left: 0.6cm, right: 0.6cm),
-  )
+  cfg: songting-a5
 )
 
 = 自序

@@ -2,16 +2,47 @@
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/hydra:0.6.1": hydra
 #import "@preview/modern-nju-thesis:0.4.0": 字体, 字号
-
-// Public constants for default configurations
-#let default-songting-cfg = (
+// Paper-specific configurations
+#let songting-a4 = (
   paper: "a4",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 3cm),
+  size: 12pt,
+  display-page-numbers: true,
+  use-odd-pagebreak: false,
+  cover-title-size: 36pt,
+  cover-subtitle-size: 24pt,
+  cover-author-size: 18pt,
+  cover-publisher-size: 16pt,
+  cover-date-size: 14pt,
+  cover-edition-size: 14pt,
+  dedication-size-offset: 2pt,
+  toc-title-font: "SimSun",
+  toc-title-size: 16pt,
+  toc-title-weight: "bold",
+  toc-title-align: center,
+  toc-level1-font: "SimHei",
+  toc-other-font: "SimSun",
+  toc-entry-size: (14pt, 12pt, 12pt),
+  toc-vspace: (2em, 1em),
+  heading: (
+    font: ("SimHei", "SimHei", "SimHei", "SimHei", "SimHei"),
+    size: (22pt, 16pt, 15pt, 14pt, 14pt),
+    weight: ("bold", "regular", "regular", "regular", "regular"),
+    align: (center, left, left, left, left),
+    above: (2em, 2em, 1.5em, 1.2em, 1em),
+    below: (2em, 1.5em, 1.2em, 1em, 0.8em),
+    pagebreak: (true, false, false, false, false),
+  ),
+  caption-font: "SimSun",
+  caption-size: 10.5pt,
+  footnote-font: "SimSun",
+  footnote-size: 10.5pt,
+  // Base configuration properties
   main-font: ("SimSun", "Times New Roman"),
   title-font: ("SimHei",),
   kai-font: ("KaiTi", "KaiTi_GB2312"),
   lang: "zh",
-  size: 12pt,
+  header-suffix: none,
   tracking: 0.1em,
   line-spacing: 1.5em,
   par-spacing: 1.5em,
@@ -21,8 +52,6 @@
   section-label: "第{2:一}节",
   header-rule: true,
   display-header: true,
-  display-page-numbers: true,
-  use-odd-pagebreak: false,
   header-spacing: 0.25em,
   header-font-size-factor: 0.875,
   header-font: "KaiTi",
@@ -34,84 +63,62 @@
     "{3:1}、",
     "{4:I}、",
     "{5:1}、",
-  )
+  ),
 )
 
-#let default-paper-cfg = (
-  a4: (
-    margin: (top: 2.5cm, bottom: 2.5cm, left: 3cm, right: 3cm),
-    size: 12pt,
-    display-page-numbers: true,
-    use-odd-pagebreak: false,
-    cover-title-size: 36pt,
-    cover-subtitle-size: 24pt,
-    cover-author-size: 18pt,
-    cover-publisher-size: 16pt,
-    cover-date-size: 14pt,
-    cover-edition-size: 14pt,
-    dedication-size-offset: 2pt,
-    toc-title-font: "SimSun",
-    toc-title-size: 16pt,
-    toc-title-weight: "bold",
-    toc-title-align: center,
-    toc-level1-font: "SimHei",
-    toc-other-font: "SimSun",
-    toc-entry-size: (14pt, 12pt, 12pt),
-    toc-vspace: (2em, 1em),
-    heading: (
-      font: ("SimHei", "SimHei", "SimHei", "SimHei", "SimHei"),
-      size: (22pt, 16pt, 15pt, 14pt, 14pt),
-      weight: ("bold", "regular", "regular", "regular", "regular"),
-      align: (center, left, left, left, left),
-      above: (2em, 2em, 1.5em, 1.2em, 1em),
-      below: (2em, 1.5em, 1.2em, 1em, 0.8em),
-      pagebreak: (true, false, false, false, false),
-    ),
-    caption-font: "SimSun",
-    caption-size: 10.5pt,
-    footnote-font: "SimSun",
-    footnote-size: 10.5pt,
+#let songting-a5 = (
+  ..songting-a4,
+  paper: "a5",
+  margin: (top: 2.5cm, bottom: 2.5cm, left: 2cm, right: 2cm),
+)
+
+#let songting-b6 = (
+  ..songting-a4,
+  paper: "iso-b6",
+  margin: (top: 1cm, bottom: 1cm, left: 0.6cm, right: 0.6cm),
+  size: 字号.三号,
+  display-page-numbers: false,
+  use-odd-pagebreak: false,
+  display-header: false,
+  cover-title-size: 30pt,
+  cover-subtitle-size: 22pt,
+  cover-author-size: 20pt,
+  toc-vspace: (1em, 0.5em),
+  cover-publisher-size: 20pt,
+  cover-date-size: 10pt,
+  cover-edition-size: 10pt,
+  dedication-size-offset: 1pt,
+  toc-entry-size: (字号.小四 + 2pt, 字号.小四 + 1pt, 字号.小四),
+  heading: (
+    font: auto,
+    size: (字号.三号 + 4pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号),
+    weight: ("bold", "bold", "bold", "bold", "bold"),
+    align: (center, left, left, left, left),
+    above: (2em, 1.2em, 1.2em, 1.2em, 1em),
+    below: (1.5em, 1.2em, 1.2em, 1.2em, 1em),
+    pagebreak: (true, false, false, false, false),
   ),
-  iso-b6: (
-    margin: (top: 1cm, bottom: 1cm, left: 0.6cm, right: 0.6cm),
-    size: 字号.三号,
-    display-page-numbers: false,
-    use-odd-pagebreak: false,
-    display-header: false,
-    cover-title-size: 30pt,
-    cover-subtitle-size: 22pt,
-    cover-author-size: 20pt,
-    toc-vspace: (1em, 0.5em),
-    cover-publisher-size: 20pt,
-    cover-date-size: 10pt,
-    cover-edition-size: 10pt,
-    dedication-size-offset: 1pt,
-    toc-entry-size: (字号.小四 + 2pt, 字号.小四 + 1pt, 字号.小四),
-    heading: (
-      font: auto,
-      size: (字号.三号 + 4pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号),
-      weight: ("bold", "bold", "bold", "bold", "bold"),
-      align: (center, left, left, left, left),
-      above: (2em, 1.2em, 1.2em, 1.2em, 1em),
-      below: (1.5em, 1.2em, 1.2em, 1.2em, 1em),
-      pagebreak: (true, false, false, false, false),
-    ),
-  )
 )
 
 // Helper function to compute final configuration
-#let compute-config(paper-cfg-override: (:), cfg-override: (:)) = {
-  let paper-cfg = default-paper-cfg + paper-cfg-override
-  let cfg = default-songting-cfg + cfg-override
-  let paper-type = cfg.paper
+#let compute-config(cfg-override: (:)) = {
+  // Available paper configurations
+  let songting-paper-configs = (
+    a4: songting-a4,
+    a5: songting-a5,
+    b6: songting-b6,
+  )
 
-  // Apply paper-specific config
-  let paper-settings = if paper-type != none and paper-cfg.at(paper-type, default:none) != none {
-    paper-cfg.at(paper-type)
-  } else {
-    paper-cfg.at("a4")
-  }
-  (paper-settings + cfg , paper-settings.heading)
+  // Default to a4 if no paper type specified
+  let paper-type = cfg-override.at("paper", default: "a4")
+
+  // Get base configuration for the specified paper type
+  let base-cfg = songting-paper-configs.at(paper-type, default: songting-a4)
+
+  // Merge with user overrides
+  let final-cfg = base-cfg + cfg-override
+
+  return (final-cfg, final-cfg.heading)
 }
 
 // Main book template function
@@ -127,14 +134,12 @@
   toc: true,
   front-matter-headings: ("前言", "目录", "序言", "跋", "自序"),
   back-matter-headings: ("附录", "后记", "参考文献", "索引", "本书引用书目"),
-  heading-cfg: (:),
-  paper-cfg: (:),
   cfg: (:),
   body,
 ) = {
   // Compute final configuration
-  let (cfg, default-heading) = compute-config(paper-cfg-override: paper-cfg, cfg-override: cfg)
-  let heading-cfg = default-heading + heading-cfg
+  let (cfg, default-heading) = compute-config(cfg-override: cfg)
+  let heading-cfg = default-heading
 
   // Handle auto heading font
   if heading-cfg.font == auto {
@@ -245,7 +250,7 @@
 
     // Check if we need a pagebreak for this heading level
     if array-at(heading-cfg.pagebreak, level) {
-      pagebreak(weak: true, to: if cfg.use-odd-pagebreak { "odd" } )
+      pagebreak(weak: true, to: if cfg.use-odd-pagebreak { "odd" })
     }
 
     // Apply text formatting for this heading level
@@ -386,7 +391,9 @@
   // Header for main content pages
   set page(
     header: context {
-      align(center)[#text(font: cfg.kai-font, size: cfg.size * cfg.header-font-size-factor)[#hydra(1)]]
+      align(center)[#text(font: cfg.kai-font, size: cfg.size * cfg.header-font-size-factor)[#hydra(1) #if (
+            cfg.header-suffix != none
+          ) { cfg.header-suffix } else { "" }]]
       line(length: 100%)
     },
   ) if cfg.display-header

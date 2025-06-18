@@ -1,9 +1,10 @@
-#import "../lib.typ": songting-book
+#import "../lib.typ": songting-book, songting-a4
 #import "@preview/tablem:0.2.0": tablem
 
 #show: songting-book.with(
   title: "西游异志：西游记妖怪群像研究",
   author: "克劳德",
+  cfg: songting-a4 + (header-suffix: "version: e981a6c"),
 )
 
 = 自序
