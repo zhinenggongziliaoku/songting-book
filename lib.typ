@@ -25,7 +25,7 @@
   toc-entry-size: (14pt, 12pt, 12pt),
   toc-vspace: (2em, 1em),
   heading: (
-    font: ("SimHei", "SimHei", "Kaiti", "Kaiti", "Kaiti"),
+    font: ("SimHei", "SimHei", "SimHei", "SimHei", "SimHei"),
     size: (22pt, 18pt, 16pt, 14pt, 14pt),
     weight: ("bold", "regular", "regular", "regular", "regular"),
     align: (center, left, left, left, left),
