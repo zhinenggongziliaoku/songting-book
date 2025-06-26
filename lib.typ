@@ -45,7 +45,7 @@
   header-suffix: none,
   tracking: 0.1em,
   line-spacing: 1.5em,
-  par-spacing: 1.5em,
+  par-spacing: 2.5em,
   indent: 2em,
   justify: true,
   header-numbly: ("第{1:一}章", "第{2:一}节", "§{3:一}", "※{4:一}、", "✧({5:1})、"),
