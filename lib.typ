@@ -25,12 +25,12 @@
   toc-entry-size: (14pt, 12pt, 12pt),
   toc-vspace: (2em, 1em),
   heading: (
-    font: ("SimHei", "SimHei", "SimHei", "SimHei", "SimHei"),
-    size: (22pt, 16pt, 15pt, 14pt, 14pt),
+    font: ("SimHei", "SimHei", "Kaiti", "Kaiti", "Kaiti"),
+    size: (22pt, 18pt, 16pt, 14pt, 14pt),
     weight: ("bold", "regular", "regular", "regular", "regular"),
     align: (center, left, left, left, left),
     above: (2em, 2em, 1.5em, 1.2em, 1em),
-    below: (2em, 1.5em, 1.2em, 1em, 0.8em),
+    below: (2em, 1.5em, 1.2em, 1.2em, 1em),
     pagebreak: (true, false, false, false, false),
   ),
   caption-font: "SimSun",
@@ -40,7 +40,7 @@
   // Base configuration properties
   main-font: ("SimSun", "Times New Roman"),
   title-font: ("SimHei",),
-  kai-font: ("KaiTi", "KaiTi_GB2312"),
+  kai-font: ("KaiTi"),
   lang: "zh",
   header-suffix: none,
   tracking: 0.1em,
@@ -48,8 +48,7 @@
   par-spacing: 1.5em,
   indent: 2em,
   justify: true,
-  chapter-label: "第{1:一}章",
-  section-label: "第{2:一}节",
+  header-numbly: ("第{1:一}章", "第{2:一}节", "§{3:一}", "※{4:一}、", "✧({5:1})、"),
   header-rule: true,
   display-header: true,
   header-spacing: 0.25em,
@@ -59,7 +58,7 @@
   headingone-adjust-char: "　　",
   enum_num: numbly(
     "{1:一}、",
-    "{2:①}、",
+    "{2:①}",
     "{3:1}、",
     "{4:I}、",
     "{5:1}、",
@@ -89,8 +88,7 @@
   cover-edition-size: 10pt,
   dedication-size-offset: 1pt,
   toc-entry-size: (字号.小四 + 2pt, 字号.小四 + 1pt, 字号.小四),
-  heading: (
-    font: auto,
+  heading: songting-a4.heading +  (
     size: (字号.三号 + 4pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号),
     weight: ("bold", "bold", "bold", "bold", "bold"),
     align: (center, left, left, left, left),
@@ -132,7 +130,7 @@
   cover: auto,
   dedication: none,
   toc: true,
-  front-matter-headings: ("前言", "目录", "序言", "跋", "自序"),
+  front-matter-headings: ("前言", "目录", "序言", "跋", "自序", "内容简介"),
   back-matter-headings: ("附录", "后记", "参考文献", "索引", "本书引用书目"),
   cfg: (:),
   body,
@@ -256,9 +254,12 @@
     // Apply text formatting for this heading level
     let heading-content = {
       set text(
-        font: array-at(heading-cfg.font, level),
+        font: ("Times New Roman", array-at(heading-cfg.font, level)),
         size: array-at(heading-cfg.size, level),
         weight: array-at(heading-cfg.weight, level),
+      )
+      show regex("[^\u4e00-\u9fa5]"): set text(
+        size:array-at(heading-cfg.size, level) * 0.8,
       )
 
       // Special handling for front matter headings
@@ -380,11 +381,7 @@
   // Set up heading numbering for main content
   set heading(
     numbering: numbly(
-      cfg.chapter-label,
-      cfg.section-label,
-      "{3:一}、",
-      "{4:1}、",
-      "{5:I}、",
+      ..cfg.header-numbly
     ),
   )
 
