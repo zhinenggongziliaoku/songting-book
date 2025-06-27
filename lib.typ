@@ -25,13 +25,15 @@
   toc-entry-size: (14pt, 12pt, 12pt),
   toc-vspace: (2em, 1em),
   heading: (
-    font: ("SimHei", "SimHei", "SimHei", "SimHei", "SimHei"),
+    //font: ("SimHei", "SimHei", "SimHei", "SimHei", "SimHei"),
+    font: ("Source Han Sans SC", "Source Han Sans SC", "Source Han Sans SC", "Source Han Sans SC", "Source Han Sans SC"),
     size: (22pt, 18pt, 16pt, 14pt, 14pt),
-    weight: ("bold", "regular", "regular", "regular", "regular"),
+    weight: ("medium", "medium", "medium", "medium", "medium"),
     align: (center, left, left, left, left),
     above: (2em, 2em, 1.5em, 1.2em, 1em),
     below: (2em, 1.5em, 1.2em, 1.2em, 1em),
     pagebreak: (true, false, false, false, false),
+    header-numbly: ("第{1:一}章 ", "第{2:一}节 ", "{3:一} ", "（{4:一}）", "（{5:1}）"),
   ),
   caption-font: "SimSun",
   caption-size: 10.5pt,
@@ -48,7 +50,6 @@
   par-spacing: 2.5em,
   indent: 2em,
   justify: true,
-  header-numbly: ("第{1:一}章", "第{2:一}节", "§{3:一}", "※{4:一}、", "✧({5:1})、"),
   header-rule: true,
   display-header: true,
   header-spacing: 0.25em,
@@ -58,7 +59,7 @@
   headingone-adjust-char: "　　",
   enum_num: numbly(
     "{1:一}、",
-    "{2:①}",
+    "{2:①}、",
     "{3:1}、",
     "{4:I}、",
     "{5:1}、",
@@ -254,14 +255,10 @@
     // Apply text formatting for this heading level
     let heading-content = {
       set text(
-        font: ("Times New Roman", array-at(heading-cfg.font, level)),
+        font: array-at(heading-cfg.font, level),
         size: array-at(heading-cfg.size, level),
         weight: array-at(heading-cfg.weight, level),
       )
-      show regex("[^\u4e00-\u9fa5]"): set text(
-        size:array-at(heading-cfg.size, level) * 0.8,
-      )
-
       // Special handling for front matter headings
       if (
         cfg.headingone-adjust-char != none
@@ -381,7 +378,7 @@
   // Set up heading numbering for main content
   set heading(
     numbering: numbly(
-      ..cfg.header-numbly
+      ..cfg.heading.header-numbly
     ),
   )
 
