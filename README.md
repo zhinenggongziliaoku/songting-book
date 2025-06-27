@@ -1,5 +1,7 @@
 # 松亭书籍排版模板 (SongTing Book Template)
 
+SongTing Book is a Typst template designed for Chinese book layout, supporting multiple paper sizes and providing comprehensive typesetting functionality.
+
 松亭书籍排版模板是一个为中文书籍排版设计的 Typst 模板，支持多种纸型，提供了完整的排版功能
 
 ## 功能特点
@@ -103,7 +105,8 @@ cfg: (
 
 ## 注意事项
 
-1. 使用此模板需要安装相应的中文字体（windows自带的宋体、黑体、楷体）,否则需要通过参数指定(思源宋体、思源黑体等需要自己安装)
+1. 使用此模板需要安装相应的中文字体（windows自带的宋体、黑体、楷体, 以及思源宋体，使用思源宋体是为了标题获得更大的字重）,否则需要通过参数指定(思源宋体、思源黑体等需要自己安装)
+    下载地址: https://mirrors.tuna.tsinghua.edu.cn/adobe-fonts/
 2. 前言、附录等特殊章节会自动识别并使用不同的格式
 
 
