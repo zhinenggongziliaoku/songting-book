@@ -361,7 +361,7 @@
         } else if level == 2 {
           text(size: cfg.toc-entry-size.at(1), prefix)
         } else {
-          text(size: cfg.toc-entry-size.at(2), prefix)
+          text(size: cfg.toc-entry-size.at(2), prefix.text.replace("§", ""))
         }
       },
     )
