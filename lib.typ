@@ -385,10 +385,14 @@
   // Header for main content pages
   set page(
     header: context {
-      align(center)[#text(font: cfg.kai-font, size: cfg.size * cfg.header-font-size-factor)[#hydra(1) #if (
-            cfg.header-suffix != none
-          ) { cfg.header-suffix } else { "" }]]
-      line(length: 100%)
+      grid(
+        rows: (1fr, auto),
+        gutter: 20pt, // Space between rows
+        align(center)[#text(font: cfg.kai-font, size: cfg.size * cfg.header-font-size-factor)[#hydra(1) #if (
+              cfg.header-suffix != none
+            ) { cfg.header-suffix } else { "" }]],
+        line(length: 100%)
+      )
     },
   ) if cfg.display-header
 
