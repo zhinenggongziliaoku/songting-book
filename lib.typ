@@ -20,7 +20,7 @@
   toc-title-size: 16pt,
   toc-title-weight: "bold",
   toc-title-align: center,
-  toc-level1-font: "SimHei",
+  toc-level1-font: "Source Han Sans SC",
   toc-other-font: "SimSun",
   toc-entry-size: (14pt, 12pt, 12pt),
   toc-vspace: (2em, 1em),
@@ -41,7 +41,7 @@
   footnote-size: 10.5pt,
   // Base configuration properties
   main-font: ("SimSun", "Times New Roman"),
-  title-font: ("SimHei",),
+  title-font: ("Source Han Sans SC",),
   kai-font: ("KaiTi"),
   lang: "zh",
   header-suffix: none,
@@ -337,7 +337,7 @@
     set outline(indent: level => (0pt, 18pt, 28pt).slice(0, calc.min(level + 1, 3)).sum())
     show outline.entry: outrageous.show-entry.with(
       ..outrageous.presets.typst,
-      font: ("SimHei", "SimSun"),
+      font: ("Source Han Sans SC", "SimSun"),
       vspace: cfg.toc-vspace,
       fill: (align(right, repeat(gap: 0.15em)[.]), align(right, repeat(gap: 0.15em)[.])),
       body-transform: (level, prefix, body) => {
