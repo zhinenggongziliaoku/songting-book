@@ -204,6 +204,8 @@
     "——"
   } 
 
+  show "……": set text(tracking: 0em)
+
   show "(": if cfg.force-zh-bracket  { "（" } else { "(" }
   show ")": if cfg.force-zh-bracket  { "）" } else { ")" }
 
