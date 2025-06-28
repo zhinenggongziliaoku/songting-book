@@ -198,6 +198,12 @@
     tracking: cfg.tracking,
   )
 
+  
+  show "——" :  {
+    set text(font: "Source Han Serif SC")
+    "——"
+  } 
+
   show "(": if cfg.force-zh-bracket  { "（" } else { "(" }
   show ")": if cfg.force-zh-bracket  { "）" } else { ")" }
 
