@@ -87,6 +87,7 @@
     "{4:I}、",
     "{5:1}、",
   ),
+  force-zh-bracket: true,
 )
 
 #let songting-a5 = (
@@ -196,6 +197,9 @@
     lang: cfg.lang,
     tracking: cfg.tracking,
   )
+
+  show "(": if cfg.force-zh-bracket  { "（" } else { "(" }
+  show ")": if cfg.force-zh-bracket  { "）" } else { ")" }
 
   // Paragraph settings
   set par(
