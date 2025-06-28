@@ -39,12 +39,12 @@
   cover-date-size: 14pt,
   cover-edition-size: 14pt,
   dedication-size-offset: 2pt,
-  toc-title-font: "SimSun",
+  toc-title-font: 字体.宋体,
   toc-title-size: 16pt,
   toc-title-weight: "bold",
   toc-title-align: center,
   toc-level1-font: 字体.黑体,
-  toc-other-font: "SimSun",
+  toc-other-font: 字体.宋体,
   toc-entry-size: (14pt, 12pt, 12pt),
   toc-vspace: (2em, 1em),
   heading: (
@@ -58,14 +58,14 @@
     pagebreak: (true, false, false, false, false),
     header-numbly: ("第{1:一}章 ", "第{2:一}节 ", "{3:一} ", "（{4:一}）", "（{5:1}）"),
   ),
-  caption-font: "SimSun",
+  caption-font: 字体.宋体,
   caption-size: 10.5pt,
-  footnote-font: "SimSun",
+  footnote-font: 字体.宋体,
   footnote-size: 10.5pt,
   // Base configuration properties
   main-font: 字体.宋体,
   title-font: (字体.黑体),
-  kai-font: ("KaiTi"),
+  kai-font: (字体.楷体),
   lang: "zh",
   header-suffix: none,
   tracking: 0.1em,
@@ -77,7 +77,7 @@
   display-header: true,
   header-spacing: 0.25em,
   header-font-size-factor: 0.875,
-  header-font: "KaiTi",
+  header-font: 字体.楷体,
   outline_depth: 3,
   headingone-adjust-char: "　　",
   enum_num: numbly(
@@ -360,7 +360,7 @@
     set outline(indent: level => (0pt, 18pt, 28pt).slice(0, calc.min(level + 1, 3)).sum())
     show outline.entry: outrageous.show-entry.with(
       ..outrageous.presets.typst,
-      font: ("Source Han Sans SC", "SimSun"),
+      font: (字体.黑体, 字体.宋体),
       vspace: cfg.toc-vspace,
       fill: (align(right, repeat(gap: 0.15em)[.]), align(right, repeat(gap: 0.15em)[.])),
       body-transform: (level, prefix, body) => {
