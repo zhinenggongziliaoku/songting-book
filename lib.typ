@@ -53,8 +53,8 @@
     size: (22pt, 18pt, 16pt, 14pt, 14pt),
     weight: ("medium", "medium", "medium", "medium", "medium"),
     align: (center, center, left, left, left),
-    above: (2em, 2em, 1.5em, 1.5em, 1.5em),
-    below: (2em, 1.5em, 1.5em, 1.5em, 1.5em),
+    above: (2em, 2em, 2em, 2em, 2em),
+    below: (2em, 2em, 2em, 2em, 2em),
     pagebreak: (true, false, false, false, false),
     header-numbly: ("第{1:一}章 ", "第{2:一}节 ", "{3:一} ", "（{4:一}）", "（{5:1}）"),
   ),
@@ -70,7 +70,7 @@
   header-suffix: none,
   tracking: 0.1em,
   line-spacing: 1.5em,
-  par-spacing: 2.5em,
+  par-spacing: 2em,
   indent: 2em,
   justify: true,
   header-rule: true,
@@ -87,7 +87,7 @@
     "{4:I}、",
     "{5:1}、",
   ),
-  force-zh-bracket: true,
+  force-zh-puct: true,
 )
 
 #let songting-a5 = (
@@ -204,10 +204,32 @@
     "——"
   } 
 
+  // 英文 → 中文标点转换函数（支持智能引号匹配）
+  let trans_puct_cn(ch) = {
+      // 基础标点映射
+      let base-replacements = (
+          //(".", "。"),  // 句号
+          ",": "，",  // 逗号
+          ";": "；",  // 分号
+          ":": "：",  // 冒号
+          "?": "？",  // 问号
+          "!": "！",  // 感叹号
+          "(": "（",  // 左圆括号
+          ")": "）",  // 右圆括号
+          "[": "【",  // 左方括号
+          "]": "】",  // 右方括号
+      )
+
+      base-replacements.at(ch.text, default: ch.text)
+  }
+
   show "……": set text(tracking: 0em)
 
-  show "(": if cfg.force-zh-bracket  { "（" } else { "(" }
-  show ")": if cfg.force-zh-bracket  { "）" } else { ")" }
+  show regex("[.,;:?!()\[\]]"): it => if cfg.force-zh-puct  {
+      trans_puct_cn(it)
+  } else {
+    it
+  }
 
   // Paragraph settings
   set par(
