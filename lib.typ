@@ -74,19 +74,22 @@
   toc-vspace: (2em, 1em),
   heading: (
     //font: ("SimHei", "SimHei", "SimHei", "SimHei", "SimHei"),
-    font: (字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体,),
+    font: (字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体),
     size: (22pt, 18pt, 16pt, 14pt, 14pt, 14pt),
-    weight: ("medium", "medium", "medium", "regular", "regular", "regular"),
+    weight: ("bold", "medium", "medium", "regular", "regular", "regular"),
     align: (center, center, left, left, left, left),
     above: (2em, 2em, 2em, 2em, 2em, 2em),
     below: (2em, 2em, 2em, 2em, 2em, 2em),
     pagebreak: (true, false, false, false, false),
     header-numbly: ("第{1:一}章 ", "第{2:一}节 ", "{3:一} ", "（{4:一}）", "{5:1}", "（{6:1}）"),
   ),
-  caption-font: 字体.宋体,
-  caption-size: 10.5pt,
-  footnote-font: 字体.宋体,
-  footnote-size: 10.5pt,
+  caption: (
+    separator: "  ",
+    font: 字体.楷体,
+    numbering: "1 - 1",
+    size: 1em,
+  ),
+  footnote: (font: 字体.楷体, size: 0.8em),
   // Base configuration properties
   main-font: 字体.宋体,
   title-font: (字体.黑体),
@@ -208,7 +211,7 @@
   set enum(
     full: true,
     numbering: cfg.enum_num,
-    number-align: start
+    number-align: start,
   )
 
   // Page settings
@@ -402,7 +405,7 @@
     content-map.at(current-section).push(child)
   }
 
-  show footnote.entry: set text(font: 字体.楷体, size: 0.6em)
+  show footnote.entry: set text(font: cfg.footnote.font, size: cfg.footnote.size)
   // Output front matter
   for item in content-map.at("front") {
     item
@@ -473,19 +476,13 @@
       line(length: 100%),
     )
   }) if cfg.display-header
-  let separator = "  "
-  // caption 样式
-  let caption-style =  strong
-  let caption-size =  字号.五号
-  set figure.caption(separator: separator)
-  //show figure.caption: caption-style
+  // caption
+  set figure.caption(separator: cfg.caption.separator)
   show heading: i-figured.reset-counters
   show figure: it => {
     i-figured.show-figure(it, numbering: "1 - 1")
   }
-  show figure.caption: set text(font: 字体.黑体)
-
-
+  show figure.caption: set text(font: cfg.caption.font, size: cfg.caption.size)
 
   // Output main content
   for item in content-map.at("main") {
