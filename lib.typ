@@ -128,7 +128,7 @@
   ..songting-a4,
   paper: "iso-b6",
   margin: (top: 1cm, bottom: 1cm, left: 0.6cm, right: 0.6cm),
-  size: 字号.三号,
+  size: 字号.小二 + 2pt,
   display-page-numbers: false,
   use-odd-pagebreak: false,
   display-header: false,
@@ -141,13 +141,13 @@
   cover-edition-size: 10pt,
   dedication-size-offset: 1pt,
   toc-entry-size: (字号.小四 + 2pt, 字号.小四 + 1pt, 字号.小四),
+  line-spacing: 1.5em,
+  par-spacing: 2em,
+
   heading: songting-a4.heading
     + (
-      size: (字号.三号 + 4pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号),
-      weight: ("bold", "bold", "bold", "bold", "bold"),
-      align: (center, left, left, left, left),
-      above: (2em, 1.2em, 1.2em, 1.2em, 1em),
-      below: (1.5em, 1.2em, 1.2em, 1.2em, 1em),
+      size: (1em + 4pt, 1em + 1pt, 1em + 1pt, 1em + 1pt, 1em, 1em),
+      weight: ("bold", "bold", "bold", "regular", "regular", "regular"),
       pagebreak: (true, false, false, false, false),
     ),
 )
