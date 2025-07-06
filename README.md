@@ -19,7 +19,7 @@ SongTing Book is a Typst template designed for Chinese book layout, supporting m
 ### 基本使用
 
 ```typst
-#import "@preview/songting-book:0.0.2": songting-book
+#import "@preview/songting-book:0.0.4": songting-book
 
 #show: songting-book.with(
   title: "我的书名",

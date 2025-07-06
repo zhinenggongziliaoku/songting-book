@@ -1,6 +1,7 @@
 #import "@preview/outrageous:0.4.0"
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/hydra:0.6.1": hydra
+#import "@preview/i-figured:0.2.4"
 #import "@preview/modern-nju-thesis:0.4.0": 字号
 
 
@@ -9,18 +10,44 @@
 #let 字体 = (
   // 宋体，属于「有衬线字体」，一般可以等同于英文中的 Serif Font
   // 这一行分别是「新罗马体（有衬线英文字体）」、「宋体（Windows）」、「思源宋体（简体）」、「思源宋体」、「宋体（MacOS）」
-  宋体: ((name: "Times New Roman", covers: "latin-in-cjk"),"SimSun", "Source Han Serif SC", "Source Han Serif", "Noto Serif CJK SC",  "Songti SC", "STSongti"),
+  宋体: (
+    (name: "Times New Roman", covers: "latin-in-cjk"),
+    "SimSun",
+    "Source Han Serif SC",
+    "Source Han Serif",
+    "Noto Serif CJK SC",
+    "Songti SC",
+    "STSongti",
+  ),
   // 黑体，属于「无衬线字体」，一般可以等同于英文中的 Sans Serif Font
   // 这一行分别是「Arial（无衬线英文字体）」、「思源黑体（简体）」、「思源黑体」、「黑体（Windows）」、「黑体（MacOS）」
   // 优先选用字重配置更多的思源黑体
-  黑体: ((name: "Arial", covers: "latin-in-cjk"), "Source Han Sans SC", "Source Han Sans", "Noto Sans CJK SC", "SimHei", "Heiti SC", "STHeiti"),
+  黑体: (
+    (name: "Arial", covers: "latin-in-cjk"),
+    "Source Han Sans SC",
+    "Source Han Sans",
+    "Noto Sans CJK SC",
+    "SimHei",
+    "Heiti SC",
+    "STHeiti",
+  ),
   // 楷体
   楷体: ((name: "Times New Roman", covers: "latin-in-cjk"), "KaiTi", "Kaiti SC", "STKaiti", "FZKai-Z03S"),
   // 仿宋
   仿宋: ((name: "Times New Roman", covers: "latin-in-cjk"), "FangSong", "FangSong SC", "STFangSong", "FZFangSong-Z02S"),
   // 等宽字体，用于代码块环境，一般可以等同于英文中的 Monospaced Font
   // 这一行分别是「Courier New（Windows 等宽英文字体）」、「思源等宽黑体（简体）」、「思源等宽黑体」、「黑体（Windows）」、「黑体（MacOS）」
-  等宽: ((name: "Courier New", covers: "latin-in-cjk"), (name: "Menlo", covers: "latin-in-cjk"), (name: "IBM Plex Mono", covers: "latin-in-cjk"), "Source Han Sans HW SC", "Source Han Sans HW", "Noto Sans Mono CJK SC", "SimHei", "Heiti SC", "STHeiti"),
+  等宽: (
+    (name: "Courier New", covers: "latin-in-cjk"),
+    (name: "Menlo", covers: "latin-in-cjk"),
+    (name: "IBM Plex Mono", covers: "latin-in-cjk"),
+    "Source Han Sans HW SC",
+    "Source Han Sans HW",
+    "Noto Sans Mono CJK SC",
+    "SimHei",
+    "Heiti SC",
+    "STHeiti",
+  ),
 )
 
 #let songting-song = ()
@@ -113,14 +140,15 @@
   cover-edition-size: 10pt,
   dedication-size-offset: 1pt,
   toc-entry-size: (字号.小四 + 2pt, 字号.小四 + 1pt, 字号.小四),
-  heading: songting-a4.heading +  (
-    size: (字号.三号 + 4pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号),
-    weight: ("bold", "bold", "bold", "bold", "bold"),
-    align: (center, left, left, left, left),
-    above: (2em, 1.2em, 1.2em, 1.2em, 1em),
-    below: (1.5em, 1.2em, 1.2em, 1.2em, 1em),
-    pagebreak: (true, false, false, false, false),
-  ),
+  heading: songting-a4.heading
+    + (
+      size: (字号.三号 + 4pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号 + 1pt, 字号.三号),
+      weight: ("bold", "bold", "bold", "bold", "bold"),
+      align: (center, left, left, left, left),
+      above: (2em, 1.2em, 1.2em, 1.2em, 1em),
+      below: (1.5em, 1.2em, 1.2em, 1.2em, 1em),
+      pagebreak: (true, false, false, false, false),
+    ),
 )
 
 // Helper function to compute final configuration
@@ -198,35 +226,35 @@
     tracking: cfg.tracking,
   )
 
-  
-  show "——" :  {
+
+  show "——": {
     set text(font: "Source Han Serif SC")
     "——"
-  } 
+  }
 
   // 英文 → 中文标点转换函数（支持智能引号匹配）
   let trans_puct_cn(ch) = {
-      // 基础标点映射
-      let base-replacements = (
-          //(".", "。"),  // 句号
-          ",": "，",  // 逗号
-          ";": "；",  // 分号
-          ":": "：",  // 冒号
-          "?": "？",  // 问号
-          "!": "！",  // 感叹号
-          "(": "（",  // 左圆括号
-          ")": "）",  // 右圆括号
-          "[": "【",  // 左方括号
-          "]": "】",  // 右方括号
-      )
+    // 基础标点映射
+    let base-replacements = (
+      //(".", "。"),  // 句号
+      ",": "，", // 逗号
+      ";": "；", // 分号
+      ":": "：", // 冒号
+      "?": "？", // 问号
+      "!": "！", // 感叹号
+      "(": "（", // 左圆括号
+      ")": "）", // 右圆括号
+      "[": "【", // 左方括号
+      "]": "】", // 右方括号
+    )
 
-      base-replacements.at(ch.text, default: ch.text)
+    base-replacements.at(ch.text, default: ch.text)
   }
 
   show "……": set text(tracking: 0em)
 
-  show regex("[.,;:?!()\[\]]"): it => if cfg.force-zh-puct  {
-      trans_puct_cn(it)
+  show regex("[.,;:?!()\[\]]"): it => if cfg.force-zh-puct {
+    trans_puct_cn(it)
   } else {
     it
   }
@@ -299,10 +327,7 @@
     let level = it.level
 
     // Apply appropriate spacing
-    set block(
-      above: array-at(heading-cfg.above, level),
-      below: array-at(heading-cfg.below, level),
-    )
+    set block(above: array-at(heading-cfg.above, level), below: array-at(heading-cfg.below, level))
 
     // Check if we need a pagebreak for this heading level
     if array-at(heading-cfg.pagebreak, level) {
@@ -311,11 +336,10 @@
 
     // Apply text formatting for this heading level
     let heading-content = {
-      set text(
-        font: array-at(heading-cfg.font, level),
-        size: array-at(heading-cfg.size, level),
-        weight: array-at(heading-cfg.weight, level),
-      )
+      set text(font: array-at(heading-cfg.font, level), size: array-at(heading-cfg.size, level), weight: array-at(
+        heading-cfg.weight,
+        level,
+      ))
       // Special handling for front matter headings
       if (
         cfg.headingone-adjust-char != none
@@ -433,25 +457,22 @@
   set page(numbering: "1") if cfg.display-page-numbers
 
   // Set up heading numbering for main content
-  set heading(
-    numbering: numbly(
-      ..cfg.heading.header-numbly
-    ),
-  )
+  set heading(numbering: numbly(
+    ..cfg.heading.header-numbly,
+  ))
 
   // Header for main content pages
-  set page(
-    header: context {
-      grid(
-        rows: (1fr, auto),
-        gutter: 20pt, // Space between rows
-        align(center)[#text(font: cfg.kai-font, size: cfg.size * cfg.header-font-size-factor)[#hydra(1) #if (
-              cfg.header-suffix != none
-            ) { cfg.header-suffix } else { "" }]],
-        line(length: 100%)
-      )
-    },
-  ) if cfg.display-header
+  set page(header: context {
+    grid(
+      rows: (1fr, auto),
+      gutter: 20pt,
+      // Space between rows
+      align(center)[#text(font: cfg.kai-font, size: cfg.size * cfg.header-font-size-factor)[#hydra(1) #if (
+            cfg.header-suffix != none
+          ) { cfg.header-suffix } else { "" }]],
+      line(length: 100%),
+    )
+  }) if cfg.display-header
 
   // Output main content
   for item in content-map.at("main") {
