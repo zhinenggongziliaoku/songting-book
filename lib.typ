@@ -50,8 +50,6 @@
   ),
 )
 
-#let songting-song = ()
-
 // Paper-specific configurations
 #let songting-a4 = (
   paper: "a4",
@@ -76,14 +74,14 @@
   toc-vspace: (2em, 1em),
   heading: (
     //font: ("SimHei", "SimHei", "SimHei", "SimHei", "SimHei"),
-    font: (字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体),
-    size: (22pt, 18pt, 16pt, 14pt, 14pt),
-    weight: ("medium", "medium", "medium", "medium", "medium"),
-    align: (center, center, left, left, left),
-    above: (2em, 2em, 2em, 2em, 2em),
-    below: (2em, 2em, 2em, 2em, 2em),
+    font: (字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体, 字体.黑体,),
+    size: (22pt, 18pt, 16pt, 14pt, 14pt, 14pt),
+    weight: ("medium", "medium", "medium", "regular", "regular", "regular"),
+    align: (center, center, left, left, left, left),
+    above: (2em, 2em, 2em, 2em, 2em, 2em),
+    below: (2em, 2em, 2em, 2em, 2em, 2em),
     pagebreak: (true, false, false, false, false),
-    header-numbly: ("第{1:一}章 ", "第{2:一}节 ", "{3:一} ", "（{4:一}）", "（{5:1}）"),
+    header-numbly: ("第{1:一}章 ", "第{2:一}节 ", "{3:一} ", "（{4:一}）", "{5:1}", "（{6:1}）"),
   ),
   caption-font: 字体.宋体,
   caption-size: 10.5pt,
@@ -210,6 +208,7 @@
   set enum(
     full: true,
     numbering: cfg.enum_num,
+    number-align: start
   )
 
   // Page settings
@@ -403,6 +402,7 @@
     content-map.at(current-section).push(child)
   }
 
+  show footnote.entry: set text(font: 字体.楷体, size: 0.6em)
   // Output front matter
   for item in content-map.at("front") {
     item
@@ -473,6 +473,19 @@
       line(length: 100%),
     )
   }) if cfg.display-header
+  let separator = "  "
+  // caption 样式
+  let caption-style =  strong
+  let caption-size =  字号.五号
+  set figure.caption(separator: separator)
+  //show figure.caption: caption-style
+  show heading: i-figured.reset-counters
+  show figure: it => {
+    i-figured.show-figure(it, numbering: "1 - 1")
+  }
+  show figure.caption: set text(font: 字体.黑体)
+
+
 
   // Output main content
   for item in content-map.at("main") {
