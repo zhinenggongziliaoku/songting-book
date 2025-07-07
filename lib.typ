@@ -89,7 +89,7 @@
     numbering: "1 - 1",
     size: 1em,
   ),
-  footnote: (font: 字体.楷体, size: 0.8em),
+  footnote: (font: 字体.楷体, size: 0.8em, entry_gap: 1em, numbering: "[1]"),
   // Base configuration properties
   main-font: 字体.宋体,
   title-font: (字体.黑体),
@@ -246,8 +246,8 @@
       "!": "！", // 感叹号
       "(": "（", // 左圆括号
       ")": "）", // 右圆括号
-      "[": "【", // 左方括号
-      "]": "】", // 右方括号
+      //"[": "【", // 左方括号
+      //"]": "】", // 右方括号
     )
 
     base-replacements.at(ch.text, default: ch.text)
@@ -406,6 +406,8 @@
   }
 
   show footnote.entry: set text(font: cfg.footnote.font, size: cfg.footnote.size)
+  set footnote.entry(gap: cfg.footnote.entry_gap)
+  set footnote(numbering: cfg.footnote.numbering)
   // Output front matter
   for item in content-map.at("front") {
     item
