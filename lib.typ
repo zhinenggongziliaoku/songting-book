@@ -116,6 +116,8 @@
     "{5:1}、",
   ),
   force-zh-puct: true,
+  hide-list-marker: true,
+  list-spacing: 1em
 )
 
 #let songting-a5 = (
@@ -319,6 +321,8 @@
       ]
     ]
   }
+
+  set list(marker: [], indent: 0em, body-indent: 0em, spacing: cfg.list-spacing) if cfg.hide-list-marker
 
   // Start front matter with roman numerals (if page numbers are displayed)
   counter(page).update(1)
