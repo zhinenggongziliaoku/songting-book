@@ -120,6 +120,15 @@
   list-spacing: 1em
 )
 
+#let songting-a4-lagecy = (
+  ..songting-a4,
+  display-header: false,
+  display-page-numbers: false,
+  headng: songting-a4.heading + (
+  header-numbly: ("第{1:一}章 ", "第{2:一}节 ", "{3:I} ", "{4:一}", "({5:一})", "（{6:1}）"),
+  ),
+)
+
 #let songting-a5 = (
   ..songting-a4,
   paper: "a5",
