@@ -6,6 +6,12 @@ SongTing Book is a Typst template designed for Chinese book layout, supporting m
 
 ## 使用方法
 
+### 使用 github clone 安装最新版
+
+```bash
+git clone --depth 1 https://github.com/zhinenggongziliaoku/songting-book.git ~/.cache/typst/packages/preview/songting-book/0.0.4
+```
+
 ### 基本使用
 
 ```typst
