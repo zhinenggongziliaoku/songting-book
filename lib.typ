@@ -331,7 +331,12 @@
     ]
   }
 
-  set list(marker: [], indent: 2em, body-indent: 0em, spacing: cfg.list-spacing) if cfg.hide-list-marker
+  show list.item: it => {
+    set par(leading: cfg.list-spacing, spacing: cfg.list-spacing) if cfg.hide-list-marker
+    it.body
+  } 
+
+  set list(marker: [], indent: 0em, body-indent: 0em, spacing: cfg.list-spacing) if cfg.hide-list-marker
 
   // Start front matter with roman numerals (if page numbers are displayed)
   counter(page).update(1)
