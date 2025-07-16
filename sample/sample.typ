@@ -1,4 +1,4 @@
-#import "../lib.typ": songting-book, songting-a5
+#import "../lib.typ": *
 #import "@preview/tablem:0.2.0": tablem
 
 #show: songting-book.with(
@@ -29,6 +29,8 @@
 希望本文能为读者打开一扇窗，重新审视这些奇妙的妖怪角色，感受中国古典文学的无穷魅力。
 
 本文为AI助手克劳德撰写，旨在为《西游记》爱好者提供一个全新的视角，期待与各位读者共同探讨。内容多有错误，仅供测试使用。
+
+#heading("上篇", outlined: false, depth: 1, numbering: none)
 
 = 西游记妖怪概述
 其妖怪体系的构建堪称中国古典文学中最具想象力的创作之一。
@@ -474,6 +476,8 @@
 比丘国的红孩儿原为太上老君炼丹炉中的一粒火星，落入凡间后成精。他能喷火吐焰，法力无边，代表了火的力量与危险。
 
 这些器物成精的妖怪为《西游记》增添了奇幻色彩，同时也体现了中国传统文化中"物老成精"的观念，即任何物品只要存在时间足够长，吸收足够的精华，就有可能获得灵性。
+
+#heading("下篇", outlined: false, depth: 1, numbering: none)
 
 = 妖怪的修炼体系
 

@@ -410,7 +410,7 @@
   let current-section = "front" // Start assuming front matter
 
   for child in content-parts {
-    if child.func() == heading and child.depth == 1 {
+    if child.func() == heading and child.depth == 1 and child.body.has("text") {
       if front-matter-headings.contains(child.body.text) {
         current-section = "front"
       } else if back-matter-headings.contains(child.body.text) {
