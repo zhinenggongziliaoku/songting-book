@@ -338,7 +338,7 @@
   }
 
   show list.item: it => {
-    set par(leading: cfg.list-spacing, spacing: cfg.list-spacing) if cfg.hide-list-marker
+    set par(leading: cfg.list-spacing, spacing: cfg.list-spacing, first-line-indent: (amount: cfg.indent, all: true)) if cfg.hide-list-marker
     it.body
   } 
 
@@ -397,11 +397,21 @@
   show quote: it => {
     let content = it.body
     let is-poem = it.attribution == [poem]
+    let attribution = if it.attribution != none { 
+      align(end, [--- #it.attribution])
+    }
+
     if is-poem {
       set par(justify: true)
       align(center, text(font: cfg.kai-font)[#content])
     } else {
-      text(font: cfg.kai-font)["#content"]
+      set text(font: cfg.kai-font, size: cfg.size)
+      if it.quotes == true {
+        quotes(it.content)
+      } else {
+        content
+      }
+      attribution
     }
   }
 
