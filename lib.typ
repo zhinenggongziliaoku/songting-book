@@ -124,8 +124,14 @@
   ..songting-a4,
   display-header: false,
   display-page-numbers: false,
+  tracking: 0em,
+  line-spacing: 1em,
+  par-spacing: 1em,
+
   heading : songting-a4.heading + (
     header-numbly: ("第{1:一}章 ", "第{2:一}节 ", "{3:I} ", "{4:一}", "({5:一})", "（{6:1}）"),
+    above: (1em, 1em, 1em, 1em, 1em, 1em),
+    below: (1em, 1em, 1em, 1em, 1em, 1em),
   ),
 )
 
@@ -195,7 +201,7 @@
   cover: auto,
   dedication: none,
   toc: true,
-  front-matter-headings: ("前言", "目录", "序言", "跋", "自序", "内容简介"),
+  front-matter-headings: ("前言", "目录", "序言", "跋", "自序", "内容简介", "内容提要"),
   back-matter-headings: ("附录", "后记", "参考文献", "索引", "本书引用书目"),
   cfg: (:),
   body,
