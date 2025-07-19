@@ -337,7 +337,12 @@
     ]
   }
 
-  set list(marker: [], indent: 2em, body-indent: 0em, spacing: cfg.list-spacing) if cfg.hide-list-marker
+  show list.item: it => {
+    set par(leading: cfg.list-spacing, spacing: cfg.list-spacing) if cfg.hide-list-marker
+    it.body
+  } 
+
+  set list(marker: [], indent: 0em, body-indent: 0em, spacing: cfg.list-spacing) if cfg.hide-list-marker
 
   // Start front matter with roman numerals (if page numbers are displayed)
   counter(page).update(1)
@@ -411,7 +416,7 @@
   let current-section = "front" // Start assuming front matter
 
   for child in content-parts {
-    if child.func() == heading and child.depth == 1 {
+    if child.func() == heading and child.depth == 1 and child.body.has("text") {
       if front-matter-headings.contains(child.body.text) {
         current-section = "front"
       } else if back-matter-headings.contains(child.body.text) {
