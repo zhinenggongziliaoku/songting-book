@@ -125,7 +125,7 @@
   display-header: false,
   display-page-numbers: false,
   tracking: 0em,
-  line-spacing: 1em,
+  line-spacing: 0.5em,
   par-spacing: 1em,
 
   heading : songting-a4.heading + (
@@ -133,6 +133,13 @@
     above: (1em, 1em, 1em, 1em, 1em, 1em),
     below: (1em, 1em, 1em, 1em, 1em, 1em),
   ),
+  enum_num: numbly(
+    "({1:1})",
+    "{2:①}、",
+    "{3:1}、",
+    "{4:I}、",
+    "{5:1}、",
+    ),
 )
 
 #let songting-a5 = (
