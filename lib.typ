@@ -117,7 +117,8 @@
   ),
   force-zh-puct: true,
   hide-list-marker: true,
-  list-spacing: 1em
+  list-spacing: 1em,
+  quote-inset: 2em
 )
 
 #let songting-a4-legacy = (
@@ -146,6 +147,29 @@
   ..songting-a4,
   paper: "a5",
   margin: (top: 2.5cm, bottom: 2.5cm, left: 2cm, right: 2cm),
+)
+
+
+#let songting-a5-legacy = (
+  ..songting-a5,
+  display-header: false,
+  display-page-numbers: false,
+  tracking: 0em,
+  line-spacing: 0.8em,
+  par-spacing: 1em,
+
+  heading : songting-a4.heading + (
+    header-numbly: ("第{1:一}章 ", "第{2:一}节 ", "{3:I} ", "{4:一}", "({5:一})", "（{6:1}）"),
+    above: (1em, 1em, 1em, 1em, 1em, 1em),
+    below: (1em, 1em, 1em, 1em, 1em, 1em),
+  ),
+  enum_num: numbly(
+    "({1:1})",
+    "{2:①}、",
+    "{3:1}、",
+    "{4:I}、",
+    "{5:1}、",
+    ),
 )
 
 #let songting-b6 = (
@@ -408,18 +432,21 @@
       align(end, [--- #it.attribution])
     }
 
-    if is-poem {
-      set par(justify: true)
-      align(center, text(font: cfg.kai-font)[#content])
-    } else {
-      set text(font: cfg.kai-font, size: cfg.size)
-      if it.quotes == true {
-        quotes(it.content)
-      } else {
-        content
-      }
-      attribution
-    }
+    block(
+	    inset: cfg.quote-inset,
+	    if is-poem {
+	      set par(justify: true)
+	      align(center, text(font: cfg.kai-font)[#content])
+	    } else {
+	      set text(font: cfg.kai-font, size: cfg.size)
+	      if it.quotes == true {
+		quotes(it.content)
+	      } else {
+		content
+	      }
+	      attribution
+	    }
+    )
   }
 
   // Process body into content sections
