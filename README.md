@@ -209,22 +209,22 @@ git clone --depth 1 https://github.com/zhinenggongziliaoku/songting-book.git ~/.
 ## 自定义配置示例
 
 ```typst
-#songting-book(
-  title: "自定义书籍",
-  author: "某某",
-  cfg: (
-    paper: "a5",
-    indent: 2.5em,        // 修改首行缩进
-    line-spacing: 1.8em,  // 修改行距
-    force-zh-puct: false, // 关闭标点自动转换
-    heading: (
-      // 自定义标题样式
-      pagebreak: (true, true, false, false, false),
-      size: (24pt, 20pt, 18pt, 16pt, 14pt, 14pt),
-    ),
-  ),
+
+#let songting-a4-no-header-numbly = (
+  ..songting-a4,
+  heading: (
+    ..songting-a4.heading,
+    header-numbly: ("", "",""),
+  )
 )
-// 内容...
+
+#show: songting-book.with(
+  title: "农民进城 防骗手册",
+  author: "马文胜 主编",
+  date: datetime.today(),
+  publisher: "湖南人民出版社出版",
+  cfg: songting-a4-no-header-numbly
+)
 ```
 
 ## 特殊功能
