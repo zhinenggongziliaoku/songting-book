@@ -209,6 +209,7 @@ git clone --depth 1 https://github.com/zhinenggongziliaoku/songting-book.git ~/.
 ## 自定义配置示例
 
 ```typst
+#import "@preview/songting-book:0.0.4": songting-book, songting-a4
 
 #let songting-a4-no-header-numbly = (
   ..songting-a4,
